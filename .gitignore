@@ -38,3 +38,7 @@ yarn-error.*
 app-example
 /.idea
 /sfq
+
+/.env.development
+/.env.staging
+/.env.production
