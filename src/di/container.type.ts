@@ -1,7 +1,10 @@
 type TypesMap = {
+  mmkv: symbol;
 };
 
-const Types: TypesMap = {}
+const Types: TypesMap = {
+  mmkv: Symbol.for('MMKV'),
+}
 
 export {
   type TypesMap,
