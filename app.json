@@ -1,5 +1,8 @@
 {
   "expo": {
+    "_internal": {
+      "isDebug": true
+    },
     "plugins": [
       "expo-router",
       [
