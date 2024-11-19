@@ -1,7 +1,10 @@
 import {SplashScreen, Stack} from "expo-router";
 import React, {useCallback, useEffect} from "react";
-import {Provider} from "inversify-react";
+import {Provider, useInjection} from "inversify-react";
 import container from "@/di/container";
+import {Database} from "@nozbe/watermelondb";
+import {DatabaseProvider} from '@nozbe/watermelondb/react'
+import {Types} from "@/di/container.type";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -14,11 +17,14 @@ export default function RootLayout() {
 }
 
 function Providers({children}: { children: React.ReactNode }) {
+  const database = useInjection<Database>(Types.watermelon);
   return (
     <Provider container={() => container}>
-      <FirstTimeSetup>
-        {children}
-      </FirstTimeSetup>
+      <DatabaseProvider database={database}>
+        <FirstTimeSetup>
+          {children}
+        </FirstTimeSetup>
+      </DatabaseProvider>
     </Provider>
   )
 }

@@ -72,6 +72,7 @@ const client = z.object({
   APP_BUILD_NUMBER: z.string(),
   APP_IOS_BUNDLE_ID: z.string(),
   APP_ANDROID_PACKAGE_NAME: z.string(),
+  APP_DATABASE_NAME: z.string().min(1),
 });
 
 const buildTime = z.object({
@@ -91,6 +92,7 @@ const _clientEnv = {
   APP_ANDROID_PACKAGE_NAME: process.env.APP_ANDROID_PACKAGE_NAME,
   APP_VERSION: packageJSON.version,
   APP_BUILD_NUMBER: buildNumber,
+  APP_DATABASE_NAME: process.env.APP_DATABASE_NAME,
 };
 
 /**
